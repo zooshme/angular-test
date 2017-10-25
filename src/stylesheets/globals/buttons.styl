@@ -1,0 +1,39 @@
+.button {
+  background-color: $highlight;
+  border: 0 none transparent;
+  border-radius: 4px;
+  color: $white;
+  display: inline-block;
+  font-size: $rem(20px);
+  line-height: $rem(40px);
+  padding: $rem(10px) $rem(26px);
+  text-decoration: none;
+  box-shadow: 0 3px 0 darken($highlight, 30%);
+
+  @media screen and (max-width: $small) {
+    font-size: $rem(26px);
+    line-height: $rem(50px);
+    text-align: center;
+  }
+
+  &:hover {
+    background-color: darken($highlight, 20%);
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+
+  &:focus {
+
+  }
+
+  &__cancel {
+    background-color: $darkHighlight;
+    box-shadow: 0 3px 0 darken($darkHighlight, 30%);
+
+    &:hover {
+      background-color: darken($darkHighlight, 20%);
+    }
+  }
+}

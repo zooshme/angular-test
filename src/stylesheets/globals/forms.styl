@@ -1,0 +1,43 @@
+.form {
+  background-color: $white;
+  padding: $rem(20px) $rem(26px);
+  border-radius: $rem(12px);
+}
+
+.fields {
+  width: 60%;
+  float: left;
+}
+
+.actions {
+  width: 35%;
+  float: right;
+}
+
+.label {
+  color: $darkHighlight;
+  display: block;
+  font-family: $headingFont;
+  font-size: $rem(36px);
+  line-height: $rem(40px);
+  margin-bottom: $rem(10px);
+}
+
+.field {
+  margin-bottom: $rem(30px);
+}
+
+.input {
+  font-family: $bodyFont;
+  font-size: $rem(20px);
+  line-height: $rem(30px);
+  padding: $rem(10px) $rem(16px);
+  border-radius: $rem(6px);
+  box-shadow: inset 0 3px 12px hsla(0,0,0,.15);
+  border: 0 none transparent;
+  width: 100%;
+
+  textarea& {
+    resize: vertical;
+  }
+}

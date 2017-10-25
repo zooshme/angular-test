@@ -1,0 +1,53 @@
+$bodyFont = "Ringside Regular A", "Ringside Regular B", sans-serif;
+$headingFont = "Tungsten Rounded A", "Tungsten Rounded B", sans-serif;
+
+$rem(value) {
+  return unit((value/16), 'rem');
+}
+
+html {
+  font-size: 100%;
+
+  @media screen and (max-width: $medium) {
+    font-size: 85%;
+  }
+
+  @media screen and (max-width: $small) {
+    font-size: 70%;
+  }
+}
+
+body {
+  font-family: $bodyFont;
+}
+
+.page-title {
+  color: $highlight;
+  font-family: $headingFont;
+  font-size: $rem(110px);
+  font-weight: 700;
+  line-height: $rem(100px);
+  margin-bottom: $rem(30px);
+}
+
+.page-header {
+  margin-bottom: $rem(30px);
+
+  .button {
+    margin-top: $rem(40px);
+  }
+
+  @media screen and (max-width: $small) {
+    .page-title.pull-left {
+      float: none;
+      text-align: center;
+    }
+    .button.pull-right {
+      display: block
+      float: none;
+      width: 100%;
+      margin-top: $rem(20px);
+      margin-bottom: $rem(20px);
+    }
+  }
+}

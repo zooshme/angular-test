@@ -1,0 +1,30 @@
+<div class="container">
+  <h1 class="page-title">Cake New</h1>
+  <form class="form clearfix" ng-submit="$ctrl.submitHandler()">
+    <div class="fields">
+      <div class="field">
+        <label for="poster" class="label">Poster</label>
+        <input class="input" type="text" name="poster" id="poster" ng-model="$ctrl.cake.poster" />
+      </div>
+      <div class="field">
+        <label for="name" class="label">Name</label>
+        <input class="input" type="text" name="name" id="name" ng-model="$ctrl.cake.name" />
+      </div>
+      <div class="field">
+        <label for="comment" class="label">Comment</label>
+        <textarea class="input" name="comment" id="comment" ng-model="$ctrl.cake.comment"></textarea>
+      </div>
+      <div class="field">
+        <label for="yum" class="label">Yum factor</label>
+        <select class="input" name="yum" id="yum"
+        ng-model="$ctrl.cake.yumFactor"
+        ng-options="option.name for option in $ctrl.yumScale track by option.id"
+        ></select>
+      </div>
+    </div>
+    <div class="actions">
+      <input class="button" type="submit" value="Add New Cake" />
+      <a class="button button__cancel" ng-link="['CakesList']">Cancel</a>
+    </div>
+  </form>
+</div>

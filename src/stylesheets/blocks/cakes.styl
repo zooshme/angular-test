@@ -1,0 +1,116 @@
+.cakes {
+  &--list {
+    clearfix();
+  }
+
+  &--item {
+    float: left
+    margin-bottom: $rem(50px);
+    margin-right: 3%;
+    position: relative;
+    width: unit((103/3) - 3, '%');
+    transition: transform 0.25s ease-in;
+    box-shadow: 0 1px 2px hsla(0,0,0,.15), box-shadow 0.25s ease-in;
+    overflow: hidden;
+    border-radius: $rem(12px);
+    height: $rem(500px);
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+
+    &:hover {
+      transform: translateY($rem(-5px));
+      box-shadow: 0 3px 20px hsla(0,0,0,.15);
+    }
+
+    @media screen and (max-width: $medium) {
+      width: unit((105/2) - 5, '%');
+      margin-right: 5%;
+
+      &:nth-child(3n) {
+        margin-right: 5%;
+      }
+
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+
+    @media screen and (max-width: $small) {
+      width: 100%;
+      margin-right: 0;
+    }
+
+    &-link {
+      background-color: $white;
+      color: inherit;
+      display: block;
+      text-decoration: none;
+      height: $rem(500px);
+    }
+
+    &-poster {
+      display: block;
+      margin-bottom: $rem(20px);
+      width: 100%;
+    }
+
+    &-name {
+      color: $highlight;
+      font-size: $rem(42px);
+      font-weight: 700;
+      margin-bottom: $rem(10px);
+      padding-left: $rem(26px);
+      padding-right: $rem(26px);
+    }
+
+    &-comment {
+      font-size: $rem(16px);
+      line-height: $rem(20px);
+    }
+
+    &-remove {
+      background-color: hsl(0,0,90);
+      border-radius: $rem(30px);
+      bottom: $rem(20px);
+      display: flex;
+      height: $rem(40px);
+      position: absolute;
+      right: $rem(20px);
+      width: $rem(40px);
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: $rem(20px);
+        height: $rem(20px);
+        fill: hsl(0,0,70);
+      }
+
+      &:hover {
+        background-color: $highlight;
+
+        svg {
+          fill: $white;
+        }
+      }
+    }
+  }
+}
+
+.cake-details {
+  background-color: $white;
+  border-radius: $rem(12px);
+  padding: $rem(40px) $rem(42px);
+
+  &--poster {
+    display: block;
+    margin-bottom: $rem(30px);
+  }
+
+  &--comment {
+    font-size: $rem(20px);
+    line-height: $rem(25px);
+  }
+}

@@ -1,0 +1,13 @@
+<div class="container">
+  <section class="cake-details clearfix">
+    <div class="fields">
+      <img class="cake-details--poster" src="{{$ctrl.cake.imageUrl}}" />
+      <h1 class="page-title">{{$ctrl.cake.name}}</h1>
+      <p class="cake-details--comment">{{$ctrl.cake.comment}}</p>
+    </div>
+    <div class="actions">
+      <a class="button" ng-link="['CakeEdit', {id: $ctrl.cake._id}]">Edit</a>
+      <a class="button button__cancel" ng-link="['CakesList']">View all</a>
+    </div>
+  </section>
+</div>

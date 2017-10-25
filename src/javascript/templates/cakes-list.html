@@ -1,0 +1,14 @@
+<section class="cakes">
+  <div class="container">
+    <header class="page-header clearfix">
+      <h1 class="page-title pull-left">Cakes List</h1>
+      <a ng-link="['CakeNew']" class="button pull-right">
+        <icon filepath="'/images/plus.svg#Plus'" class="icon"></icon>
+        Add a new cake
+      </a>
+    </header>
+    <div class="cakes--list">
+      <cakes-item cake="cake" cakes="$ctrl.cakes" index="$index" ng-repeat="cake in $ctrl.cakes track by $index" class="cakes--item"></cakes-item>
+    </div>
+  </div>
+</section>
