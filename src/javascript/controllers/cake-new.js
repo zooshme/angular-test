@@ -29,17 +29,13 @@ export default class CakeNewController {
 
   submitHandler(form) {
     if (form.$valid) {
-      this.createOneCake({
-        imageUrl: this.cake.imageUrl,
-        name: this.cake.name,
-        comment: this.cake.comment,
-        yumFactor: this.cake.yumFactor
-      });
+      let {_id, imageUrl, name, comment, yumFactor} = this.cake;
+      this.createOneCake({_id, imageUrl, name, comment, yumFactor});
     }
   }
 
-  createOneCake({poster, name, comment, yum}) {
-    this.cakesService.createOneCake({poster, name, comment, yum})
+  createOneCake(fields) {
+    this.cakesService.createOneCake(fields)
       .then((response) => {
         this.cake = response.data;
         this.$router.navigate(['CakesList']);

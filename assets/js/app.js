@@ -40390,25 +40390,22 @@ var CakeNewController = function () {
     key: 'submitHandler',
     value: function submitHandler(form) {
       if (form.$valid) {
-        this.createOneCake({
-          imageUrl: this.cake.imageUrl,
-          name: this.cake.name,
-          comment: this.cake.comment,
-          yumFactor: this.cake.yumFactor
-        });
+        var _cake = this.cake,
+            _id = _cake._id,
+            imageUrl = _cake.imageUrl,
+            name = _cake.name,
+            comment = _cake.comment,
+            yumFactor = _cake.yumFactor;
+
+        this.createOneCake({ _id: _id, imageUrl: imageUrl, name: name, comment: comment, yumFactor: yumFactor });
       }
     }
   }, {
     key: 'createOneCake',
-    value: function createOneCake(_ref) {
+    value: function createOneCake(fields) {
       var _this = this;
 
-      var poster = _ref.poster,
-          name = _ref.name,
-          comment = _ref.comment,
-          yum = _ref.yum;
-
-      this.cakesService.createOneCake({ poster: poster, name: name, comment: comment, yum: yum }).then(function (response) {
+      this.cakesService.createOneCake(fields).then(function (response) {
         _this.cake = response.data;
         _this.$router.navigate(['CakesList']);
       }, function (err) {
