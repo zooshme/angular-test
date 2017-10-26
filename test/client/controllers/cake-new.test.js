@@ -11,7 +11,7 @@ describe('CakeNewController', () => {
 
   beforeEach(() => {
     angular.mock.module('app');
-    inject((_$controller_, _$httpBackend_, _$rootScope_) => {
+    inject((_$controller_, _$httpBackend_) => {
       $controller = _$controller_;
       $httpBackend = _$httpBackend_;
     });
@@ -44,7 +44,7 @@ describe('CakeNewController', () => {
       comment: 'Tastes great',
       yum: 3
     });
-    $httpBackend.flush()
+    $httpBackend.flush();
     expect(controller.cake.name).toEqual('Sweet Cake');
     expect(controller.cake._id).toEqual('59f03b62066113e8bc28f7c9');
     expect(routerSpy).toHaveBeenCalled();

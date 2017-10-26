@@ -362,7 +362,7 @@ module.exports = function (it) {
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(63);
+module.exports = __webpack_require__(67);
 
 
 /***/ }),
@@ -374,7 +374,7 @@ module.exports = __webpack_require__(63);
 
 exports.__esModule = true;
 
-var _promise = __webpack_require__(65);
+var _promise = __webpack_require__(69);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -437,7 +437,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(76);
+var IObject = __webpack_require__(80);
 var defined = __webpack_require__(20);
 module.exports = function (it) {
   return IObject(defined(it));
@@ -528,13 +528,13 @@ module.exports = function (bitmap, value) {
 
 var LIBRARY = __webpack_require__(28);
 var $export = __webpack_require__(8);
-var redefine = __webpack_require__(70);
+var redefine = __webpack_require__(74);
 var hide = __webpack_require__(6);
 var has = __webpack_require__(14);
 var Iterators = __webpack_require__(11);
-var $iterCreate = __webpack_require__(71);
+var $iterCreate = __webpack_require__(75);
 var setToStringTag = __webpack_require__(23);
-var getPrototypeOf = __webpack_require__(79);
+var getPrototypeOf = __webpack_require__(83);
 var ITERATOR = __webpack_require__(1)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
@@ -706,7 +706,7 @@ module.exports = function (O, D) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var ctx = __webpack_require__(12);
-var invoke = __webpack_require__(91);
+var invoke = __webpack_require__(95);
 var html = __webpack_require__(33);
 var cel = __webpack_require__(16);
 var global = __webpack_require__(0);
@@ -863,29 +863,33 @@ var _cakeEdit = __webpack_require__(60);
 
 var _cakeEdit2 = _interopRequireDefault(_cakeEdit);
 
-var _info = __webpack_require__(98);
+var _info = __webpack_require__(62);
 
 var _info2 = _interopRequireDefault(_info);
 
-var _icon = __webpack_require__(100);
+var _icon = __webpack_require__(64);
 
 var _icon2 = _interopRequireDefault(_icon);
 
-var _cakeDetails3 = __webpack_require__(102);
+var _cakeDetails3 = __webpack_require__(66);
 
 var _cakeDetails4 = _interopRequireDefault(_cakeDetails3);
 
-var _cakesList3 = __webpack_require__(103);
+var _cakesList3 = __webpack_require__(102);
 
 var _cakesList4 = _interopRequireDefault(_cakesList3);
 
-var _cakesItem3 = __webpack_require__(104);
+var _cakesItem3 = __webpack_require__(103);
 
 var _cakesItem4 = _interopRequireDefault(_cakesItem3);
 
-var _cakeNew3 = __webpack_require__(105);
+var _cakeNew3 = __webpack_require__(104);
 
 var _cakeNew4 = _interopRequireDefault(_cakeNew3);
+
+var _cakeEdit3 = __webpack_require__(105);
+
+var _cakeEdit4 = _interopRequireDefault(_cakeEdit3);
 
 var _main = __webpack_require__(106);
 
@@ -893,7 +897,10 @@ var _main2 = _interopRequireDefault(_main);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Services
+// Controllers
+
+
+// Components
 _angular2.default.module('app', ['ngComponentRouter']).config(function ($locationProvider) {
   $locationProvider.html5Mode({
     enabled: true
@@ -901,15 +908,12 @@ _angular2.default.module('app', ['ngComponentRouter']).config(function ($locatio
 }).value('$routerRootComponent', 'app').component('app', {
   template: _main2.default,
   $routeConfig: [{ path: '/cakes', name: 'CakesList', component: 'cakesList', useAsDefault: true }, { path: '/cakes/new', name: 'CakeNew', component: 'cakeNew' }, { path: '/cakes/:id', name: 'CakeDetails', component: 'cakeDetails' }, { path: '/cakes/:id/edit', name: 'CakeEdit', component: 'cakeEdit' }, { path: '/info', name: 'Info', component: 'info' }]
-}).service('cakesService', _cakes2.default).component('appHeader', _header2.default).component('cakesList', _cakesList2.default).component('cakesItem', _cakesItem2.default).component('cakeNew', _cakeNew2.default).component('cakeDetails', _cakeDetails2.default).component('cakeEdit', _cakeEdit2.default).component('info', _info2.default).component('icon', _icon2.default).controller('CakeDetailsController', _cakeDetails4.default).controller('CakesListController', _cakesList4.default).controller('CakesItemController', _cakesItem4.default).controller('CakeNewController', _cakeNew4.default);
+}).service('cakesService', _cakes2.default).component('appHeader', _header2.default).component('cakesList', _cakesList2.default).component('cakesItem', _cakesItem2.default).component('cakeNew', _cakeNew2.default).component('cakeDetails', _cakeDetails2.default).component('cakeEdit', _cakeEdit2.default).component('info', _info2.default).component('icon', _icon2.default).controller('CakeDetailsController', _cakeDetails4.default).controller('CakesListController', _cakesList4.default).controller('CakesItemController', _cakesItem4.default).controller('CakeNewController', _cakeNew4.default).controller('CakeEditController', _cakeEdit4.default);
 
 // Templates
 
 
-// Controllers
-
-
-// Components
+// Services
 
 /***/ }),
 /* 40 */
@@ -38068,6 +38072,11 @@ var CakesService = function () {
       return this.$http.post("api/cakes/", fields);
     }
   }, {
+    key: "updateOneCake",
+    value: function updateOneCake(fields) {
+      return this.$http.put("api/cakes/" + fields._id + "/", fields);
+    }
+  }, {
     key: "deleteOneCake",
     value: function deleteOneCake(id) {
       return this.$http.delete("api/cakes/" + id + "/");
@@ -38306,15 +38315,14 @@ var _cakeEdit = __webpack_require__(61);
 
 var _cakeEdit2 = _interopRequireDefault(_cakeEdit);
 
-var _cakeEdit3 = __webpack_require__(62);
-
-var _cakeEdit4 = _interopRequireDefault(_cakeEdit3);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CakeEdit = {
   template: _cakeEdit2.default,
-  controller: _cakeEdit4.default
+  controller: 'CakeEditController',
+  bindings: {
+    $router: '<'
+  }
 };
 
 exports.default = CakeEdit;
@@ -38323,10 +38331,71 @@ exports.default = CakeEdit;
 /* 61 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1 class=\"page-title\">Cake Edit</h1>\n  <form class=\"form clearfix\" ng-submit=\"$ctrl.save()\">\n    <div class=\"fields\">\n      <div class=\"field\">\n        <label for=\"poster\" class=\"label\">Image {{$ctrl.cake.imageUrl}}</label>\n        <input class=\"input\" type=\"text\" name=\"poster\" id=\"poster\" ng-model=\"$ctrl.cake.imageUrl\" />\n      </div>\n      <div class=\"field\">\n        <label for=\"name\" class=\"label\">Name</label>\n        <input class=\"input\" type=\"text\" name=\"name\" id=\"name\" ng-model=\"$ctrl.cake.name\" />\n      </div>\n      <div class=\"field\">\n        <label for=\"comment\" class=\"label\">Comment</label>\n        <textarea class=\"input\" name=\"comment\" id=\"comment\" ng-model=\"$ctrl.cake.comment\"></textarea>\n      </div>\n      <div class=\"field\">\n        <label for=\"yum\" class=\"label\">Yum factor</label>\n        <select class=\"input\" name=\"yum\" id=\"yum\"\n        ng-model=\"$ctrl.cake.yumFactor\"\n        ng-options=\"option.name for option in $ctrl.yumScale track by option.id\"\n        ></select>\n      </div>\n    </div>\n    <div class=\"actions\">\n      <input class=\"button\" type=\"submit\" value=\"Add New Cake\" />\n      <a class=\"button button__cancel\" ng-link=\"['CakesList']\">Cancel</a>\n    </div>\n  </form>\n</div>\n";
+module.exports = "<div class=\"container\">\n  <h1 class=\"page-title\">Cake Edit</h1>\n  <form class=\"form clearfix\" ng-submit=\"$ctrl.submitHandler()\">\n    <div class=\"fields\">\n      <div class=\"field\">\n        <label for=\"image-url\" class=\"label\">Image</label>\n        <input class=\"input\" type=\"text\" name=\"image-url\" id=\"poster\" ng-model=\"$ctrl.cake.imageUrl\" />\n      </div>\n      <div class=\"field\">\n        <label for=\"name\" class=\"label\">Name</label>\n        <input class=\"input\" type=\"text\" name=\"name\" id=\"name\" ng-model=\"$ctrl.cake.name\" />\n      </div>\n      <div class=\"field\">\n        <label for=\"comment\" class=\"label\">Comment</label>\n        <textarea class=\"input\" name=\"comment\" id=\"comment\" ng-model=\"$ctrl.cake.comment\"></textarea>\n      </div>\n      <div class=\"field\">\n        <label for=\"yum\" class=\"label\">Yum factor</label>\n        <select class=\"input\" name=\"yum\" id=\"yum\"\n        ng-model=\"$ctrl.cake.yumFactor\"\n        ng-options=\"option.name for option in $ctrl.yumScale track by option.id\"\n        ></select>\n      </div>\n    </div>\n    <div class=\"actions\">\n      <input class=\"button\" type=\"submit\" value=\"Update Cake\" />\n      <a class=\"button button__cancel\" ng-link=\"['CakesList']\">Cancel</a>\n    </div>\n  </form>\n</div>\n";
 
 /***/ }),
 /* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _info = __webpack_require__(63);
+
+var _info2 = _interopRequireDefault(_info);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Info = {
+  template: _info2.default
+};
+
+exports.default = Info;
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <h1 class=\"page-title\">Information</h1>\n</div>\n";
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _icon = __webpack_require__(65);
+
+var _icon2 = _interopRequireDefault(_icon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Icon = {
+  template: _icon2.default,
+  bindings: {
+    filepath: '<'
+  }
+};
+
+exports.default = Icon;
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports) {
+
+module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n  <use xlink:href=\"\" ng-attr-xlink:href=\"{{$ctrl.filepath}}\" />\n</svg>\n";
+
+/***/ }),
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38354,18 +38423,17 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CakeEditController = function () {
-  function CakeEditController($http, cakesService) {
-    (0, _classCallCheck3.default)(this, CakeEditController);
+var CakeDetailsController = function () {
+  function CakeDetailsController($http, cakesService) {
+    (0, _classCallCheck3.default)(this, CakeDetailsController);
 
     this.$http = $http;
     this.cakesService = cakesService;
-
-    this.yumScale = [{ id: 1, name: 'Yuck' }, { id: 2, name: 'fadfasf' }, { id: 3, name: 'dfag' }, { id: 4, name: 'dgafdas' }, { id: 5, name: 'Yummy' }];
+    this.name = "It's a Wonderful World!";
   }
 
-  (0, _createClass3.default)(CakeEditController, [{
-    key: '$routerOnActivate',
+  (0, _createClass3.default)(CakeDetailsController, [{
+    key: "$routerOnActivate",
     value: function () {
       var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(next) {
         return _regenerator2.default.wrap(function _callee$(_context) {
@@ -38376,7 +38444,7 @@ var CakeEditController = function () {
                 return this.fetchOneCake(next.params.id);
 
               case 2:
-              case 'end':
+              case "end":
                 return _context.stop();
             }
           }
@@ -38390,7 +38458,7 @@ var CakeEditController = function () {
       return $routerOnActivate;
     }()
   }, {
-    key: 'fetchOneCake',
+    key: "fetchOneCake",
     value: function fetchOneCake(id) {
       var _this = this;
 
@@ -38401,13 +38469,13 @@ var CakeEditController = function () {
       });
     }
   }]);
-  return CakeEditController;
+  return CakeDetailsController;
 }();
 
-exports.default = CakeEditController;
+exports.default = CakeDetailsController;
 
 /***/ }),
-/* 63 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // This method of obtaining a reference to the global object needs to be
@@ -38425,7 +38493,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(64);
+module.exports = __webpack_require__(68);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -38441,7 +38509,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 64 */
+/* 68 */
 /***/ (function(module, exports) {
 
 /**
@@ -39177,37 +39245,37 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 65 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(66), __esModule: true };
+module.exports = { "default": __webpack_require__(70), __esModule: true };
 
 /***/ }),
-/* 66 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(67);
-__webpack_require__(68);
-__webpack_require__(81);
+__webpack_require__(71);
+__webpack_require__(72);
 __webpack_require__(85);
-__webpack_require__(96);
-__webpack_require__(97);
+__webpack_require__(89);
+__webpack_require__(100);
+__webpack_require__(101);
 module.exports = __webpack_require__(2).Promise;
 
 
 /***/ }),
-/* 67 */
+/* 71 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 68 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $at = __webpack_require__(69)(true);
+var $at = __webpack_require__(73)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
 __webpack_require__(27)(String, 'String', function (iterated) {
@@ -39226,7 +39294,7 @@ __webpack_require__(27)(String, 'String', function (iterated) {
 
 
 /***/ }),
-/* 69 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(19);
@@ -39249,19 +39317,19 @@ module.exports = function (TO_STRING) {
 
 
 /***/ }),
-/* 70 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(6);
 
 
 /***/ }),
-/* 71 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var create = __webpack_require__(72);
+var create = __webpack_require__(76);
 var descriptor = __webpack_require__(26);
 var setToStringTag = __webpack_require__(23);
 var IteratorPrototype = {};
@@ -39276,12 +39344,12 @@ module.exports = function (Constructor, NAME, next) {
 
 
 /***/ }),
-/* 72 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(3);
-var dPs = __webpack_require__(73);
+var dPs = __webpack_require__(77);
 var enumBugKeys = __webpack_require__(32);
 var IE_PROTO = __webpack_require__(22)('IE_PROTO');
 var Empty = function () { /* empty */ };
@@ -39323,12 +39391,12 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 /***/ }),
-/* 73 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(9);
 var anObject = __webpack_require__(3);
-var getKeys = __webpack_require__(74);
+var getKeys = __webpack_require__(78);
 
 module.exports = __webpack_require__(7) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -39342,11 +39410,11 @@ module.exports = __webpack_require__(7) ? Object.defineProperties : function def
 
 
 /***/ }),
-/* 74 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(75);
+var $keys = __webpack_require__(79);
 var enumBugKeys = __webpack_require__(32);
 
 module.exports = Object.keys || function keys(O) {
@@ -39355,12 +39423,12 @@ module.exports = Object.keys || function keys(O) {
 
 
 /***/ }),
-/* 75 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var has = __webpack_require__(14);
 var toIObject = __webpack_require__(21);
-var arrayIndexOf = __webpack_require__(77)(false);
+var arrayIndexOf = __webpack_require__(81)(false);
 var IE_PROTO = __webpack_require__(22)('IE_PROTO');
 
 module.exports = function (object, names) {
@@ -39378,7 +39446,7 @@ module.exports = function (object, names) {
 
 
 /***/ }),
-/* 76 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
@@ -39390,14 +39458,14 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
 
 
 /***/ }),
-/* 77 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(21);
 var toLength = __webpack_require__(29);
-var toAbsoluteIndex = __webpack_require__(78);
+var toAbsoluteIndex = __webpack_require__(82);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -39419,7 +39487,7 @@ module.exports = function (IS_INCLUDES) {
 
 
 /***/ }),
-/* 78 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(19);
@@ -39432,12 +39500,12 @@ module.exports = function (index, length) {
 
 
 /***/ }),
-/* 79 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(14);
-var toObject = __webpack_require__(80);
+var toObject = __webpack_require__(84);
 var IE_PROTO = __webpack_require__(22)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
@@ -39451,7 +39519,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 
 
 /***/ }),
-/* 80 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.13 ToObject(argument)
@@ -39462,10 +39530,10 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 81 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(82);
+__webpack_require__(86);
 var global = __webpack_require__(0);
 var hide = __webpack_require__(6);
 var Iterators = __webpack_require__(11);
@@ -39487,13 +39555,13 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 
 /***/ }),
-/* 82 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var addToUnscopables = __webpack_require__(83);
-var step = __webpack_require__(84);
+var addToUnscopables = __webpack_require__(87);
+var step = __webpack_require__(88);
 var Iterators = __webpack_require__(11);
 var toIObject = __webpack_require__(21);
 
@@ -39528,14 +39596,14 @@ addToUnscopables('entries');
 
 
 /***/ }),
-/* 83 */
+/* 87 */
 /***/ (function(module, exports) {
 
 module.exports = function () { /* empty */ };
 
 
 /***/ }),
-/* 84 */
+/* 88 */
 /***/ (function(module, exports) {
 
 module.exports = function (done, value) {
@@ -39544,7 +39612,7 @@ module.exports = function (done, value) {
 
 
 /***/ }),
-/* 85 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39556,11 +39624,11 @@ var classof = __webpack_require__(34);
 var $export = __webpack_require__(8);
 var isObject = __webpack_require__(10);
 var aFunction = __webpack_require__(13);
-var anInstance = __webpack_require__(86);
-var forOf = __webpack_require__(87);
+var anInstance = __webpack_require__(90);
+var forOf = __webpack_require__(91);
 var speciesConstructor = __webpack_require__(35);
 var task = __webpack_require__(36).set;
-var microtask = __webpack_require__(92)();
+var microtask = __webpack_require__(96)();
 var newPromiseCapabilityModule = __webpack_require__(24);
 var perform = __webpack_require__(37);
 var promiseResolve = __webpack_require__(38);
@@ -39733,7 +39801,7 @@ if (!USE_NATIVE) {
     this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
     this._n = false;          // <- notify
   };
-  Internal.prototype = __webpack_require__(93)($Promise.prototype, {
+  Internal.prototype = __webpack_require__(97)($Promise.prototype, {
     // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
     then: function then(onFulfilled, onRejected) {
       var reaction = newPromiseCapability(speciesConstructor(this, $Promise));
@@ -39765,7 +39833,7 @@ if (!USE_NATIVE) {
 
 $export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
 __webpack_require__(23)($Promise, PROMISE);
-__webpack_require__(94)(PROMISE);
+__webpack_require__(98)(PROMISE);
 Wrapper = __webpack_require__(2)[PROMISE];
 
 // statics
@@ -39784,7 +39852,7 @@ $export($export.S + $export.F * (LIBRARY || !USE_NATIVE), PROMISE, {
     return promiseResolve(LIBRARY && this === Wrapper ? $Promise : this, x);
   }
 });
-$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(95)(function (iter) {
+$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(99)(function (iter) {
   $Promise.all(iter)['catch'](empty);
 })), PROMISE, {
   // 25.4.4.1 Promise.all(iterable)
@@ -39831,7 +39899,7 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(95)(function
 
 
 /***/ }),
-/* 86 */
+/* 90 */
 /***/ (function(module, exports) {
 
 module.exports = function (it, Constructor, name, forbiddenField) {
@@ -39842,15 +39910,15 @@ module.exports = function (it, Constructor, name, forbiddenField) {
 
 
 /***/ }),
-/* 87 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ctx = __webpack_require__(12);
-var call = __webpack_require__(88);
-var isArrayIter = __webpack_require__(89);
+var call = __webpack_require__(92);
+var isArrayIter = __webpack_require__(93);
 var anObject = __webpack_require__(3);
 var toLength = __webpack_require__(29);
-var getIterFn = __webpack_require__(90);
+var getIterFn = __webpack_require__(94);
 var BREAK = {};
 var RETURN = {};
 var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) {
@@ -39873,7 +39941,7 @@ exports.RETURN = RETURN;
 
 
 /***/ }),
-/* 88 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
@@ -39891,7 +39959,7 @@ module.exports = function (iterator, fn, value, entries) {
 
 
 /***/ }),
-/* 89 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // check on default Array iterator
@@ -39905,7 +39973,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 90 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var classof = __webpack_require__(34);
@@ -39919,7 +39987,7 @@ module.exports = __webpack_require__(2).getIteratorMethod = function (it) {
 
 
 /***/ }),
-/* 91 */
+/* 95 */
 /***/ (function(module, exports) {
 
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -39941,7 +40009,7 @@ module.exports = function (fn, args, that) {
 
 
 /***/ }),
-/* 92 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(0);
@@ -40015,7 +40083,7 @@ module.exports = function () {
 
 
 /***/ }),
-/* 93 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var hide = __webpack_require__(6);
@@ -40028,7 +40096,7 @@ module.exports = function (target, src, safe) {
 
 
 /***/ }),
-/* 94 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40049,7 +40117,7 @@ module.exports = function (KEY) {
 
 
 /***/ }),
-/* 95 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ITERATOR = __webpack_require__(1)('iterator');
@@ -40077,7 +40145,7 @@ module.exports = function (exec, skipClosing) {
 
 
 /***/ }),
-/* 96 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40104,7 +40172,7 @@ $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
 
 
 /***/ }),
-/* 97 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40123,148 +40191,7 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 
 
 /***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _info = __webpack_require__(99);
-
-var _info2 = _interopRequireDefault(_info);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Info = {
-  template: _info2.default
-};
-
-exports.default = Info;
-
-/***/ }),
-/* 99 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\n  <h1 class=\"page-title\">Information</h1>\n</div>\n";
-
-/***/ }),
-/* 100 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _icon = __webpack_require__(101);
-
-var _icon2 = _interopRequireDefault(_icon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Icon = {
-  template: _icon2.default,
-  bindings: {
-    filepath: '<'
-  }
-};
-
-exports.default = Icon;
-
-/***/ }),
-/* 101 */
-/***/ (function(module, exports) {
-
-module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n  <use xlink:href=\"\" ng-attr-xlink:href=\"{{$ctrl.filepath}}\" />\n</svg>\n";
-
-/***/ }),
 /* 102 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _regenerator = __webpack_require__(17);
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(18);
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-var _classCallCheck2 = __webpack_require__(4);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(5);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var CakeDetailsController = function () {
-  function CakeDetailsController($http, cakesService) {
-    (0, _classCallCheck3.default)(this, CakeDetailsController);
-
-    this.$http = $http;
-    this.cakesService = cakesService;
-    this.name = "It's a Wonderful World!";
-  }
-
-  (0, _createClass3.default)(CakeDetailsController, [{
-    key: "$routerOnActivate",
-    value: function () {
-      var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(next) {
-        return _regenerator2.default.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return this.fetchOneCake(next.params.id);
-
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function $routerOnActivate(_x) {
-        return _ref.apply(this, arguments);
-      }
-
-      return $routerOnActivate;
-    }()
-  }, {
-    key: "fetchOneCake",
-    value: function fetchOneCake(id) {
-      var _this = this;
-
-      this.cakesService.fetchOneCake(id).then(function (response) {
-        _this.cake = response.data;
-      }, function () {
-        console.log(err);
-      });
-    }
-  }]);
-  return CakeDetailsController;
-}();
-
-exports.default = CakeDetailsController;
-
-/***/ }),
-/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40343,7 +40270,7 @@ var CakesListController = function () {
 exports.default = CakesListController;
 
 /***/ }),
-/* 104 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40401,7 +40328,7 @@ var CakesItemController = function () {
 exports.default = CakesItemController;
 
 /***/ }),
-/* 105 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40455,7 +40382,7 @@ var CakeNewController = function () {
         poster: this.cake.poster,
         name: this.cake.name,
         comment: this.cake.comment,
-        yum: parseInt(this.cake.yum)
+        yum: this.cake.yum
       });
     }
   }, {
@@ -40480,6 +40407,127 @@ var CakeNewController = function () {
 }();
 
 exports.default = CakeNewController;
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _regenerator = __webpack_require__(17);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(18);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _classCallCheck2 = __webpack_require__(4);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(5);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CakeEditController = function () {
+  function CakeEditController($http, cakesService, $scope) {
+    (0, _classCallCheck3.default)(this, CakeEditController);
+
+    this.$http = $http;
+    this.cakesService = cakesService;
+    this.$scope = $scope;
+
+    this.yumScale = [{ id: 1, name: 'Yuck' }, { id: 2, name: 'aaaaa' }, { id: 3, name: 'bbbbb' }, { id: 4, name: 'ccccc' }, { id: 5, name: 'Yummy' }];
+  }
+
+  (0, _createClass3.default)(CakeEditController, [{
+    key: '$routerOnActivate',
+    value: function () {
+      var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(next) {
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return this.fetchOneCake(next.params.id);
+
+              case 2:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function $routerOnActivate(_x) {
+        return _ref.apply(this, arguments);
+      }
+
+      return $routerOnActivate;
+    }()
+  }, {
+    key: 'fetchOneCake',
+    value: function fetchOneCake(id) {
+      var _this = this;
+
+      this.cakesService.fetchOneCake(id).then(function (response) {
+        _this.cake = response.data;
+      }, function (err) {
+        console.log(err);
+      });
+    }
+  }, {
+    key: 'submitHandler',
+    value: function () {
+      var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
+        var _cake, _id, imageUrl, name, comment, yumFactor;
+
+        return _regenerator2.default.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _cake = this.cake, _id = _cake._id, imageUrl = _cake.imageUrl, name = _cake.name, comment = _cake.comment, yumFactor = _cake.yumFactor;
+                _context2.next = 3;
+                return this.updateOneCake({ _id: _id, imageUrl: imageUrl, name: name, comment: comment, yumFactor: yumFactor });
+
+              case 3:
+              case 'end':
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function submitHandler() {
+        return _ref2.apply(this, arguments);
+      }
+
+      return submitHandler;
+    }()
+  }, {
+    key: 'updateOneCake',
+    value: function updateOneCake(fields) {
+      var _this2 = this;
+
+      this.cakesService.updateOneCake(fields).then(function (response) {
+        _this2.$router.navigate(['CakeDetails', { id: fields._id }]);
+      }, function (err) {
+        console.log(err);
+      });
+    }
+  }]);
+  return CakeEditController;
+}();
+
+exports.default = CakeEditController;
 
 /***/ }),
 /* 106 */

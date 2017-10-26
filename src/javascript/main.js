@@ -19,6 +19,7 @@ import CakeDetailsController from './controllers/cake-details.js';
 import CakesListController from './controllers/cakes-list.js';
 import CakesItemController from './controllers/cakes-item.js';
 import CakeNewController from './controllers/cake-new.js';
+import CakeEditController from './controllers/cake-edit.js';
 
 // Templates
 import MainHtml from './templates/main.html';
@@ -52,4 +53,5 @@ angular.module('app', ['ngComponentRouter'])
   .controller('CakeDetailsController', CakeDetailsController)
   .controller('CakesListController', CakesListController)
   .controller('CakesItemController', CakesItemController)
-  .controller('CakeNewController', CakeNewController);
+  .controller('CakeNewController', CakeNewController)
+  .controller('CakeEditController', CakeEditController);

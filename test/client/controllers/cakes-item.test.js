@@ -2,7 +2,7 @@ import angular from 'angular';
 import 'angular-mocks';
 import '../../../src/javascript/main.js';
 
-describe('CakesListController', () => {
+describe('CakesItemController', () => {
   let $controller;
   let $scope;
   let $httpBackend;

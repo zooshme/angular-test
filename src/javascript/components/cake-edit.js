@@ -1,9 +1,11 @@
 import CakeEditHtml from '../templates/cake-edit.html';
-import CakeEditController from '../controllers/cake-edit.js';
 
 const CakeEdit = {
   template: CakeEditHtml,
-  controller: CakeEditController
+  controller: 'CakeEditController',
+  bindings: {
+    $router: '<'
+  }
 };
 
 export default CakeEdit;

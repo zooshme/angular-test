@@ -1,10 +1,10 @@
 <div class="container">
   <h1 class="page-title">Cake Edit</h1>
-  <form class="form clearfix" ng-submit="$ctrl.save()">
+  <form class="form clearfix" ng-submit="$ctrl.submitHandler()">
     <div class="fields">
       <div class="field">
-        <label for="poster" class="label">Image {{$ctrl.cake.imageUrl}}</label>
-        <input class="input" type="text" name="poster" id="poster" ng-model="$ctrl.cake.imageUrl" />
+        <label for="image-url" class="label">Image</label>
+        <input class="input" type="text" name="image-url" id="poster" ng-model="$ctrl.cake.imageUrl" />
       </div>
       <div class="field">
         <label for="name" class="label">Name</label>
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="actions">
-      <input class="button" type="submit" value="Add New Cake" />
+      <input class="button" type="submit" value="Update Cake" />
       <a class="button button__cancel" ng-link="['CakesList']">Cancel</a>
     </div>
   </form>

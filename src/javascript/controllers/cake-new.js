@@ -32,7 +32,7 @@ export default class CakeNewController {
       poster: this.cake.poster,
       name: this.cake.name,
       comment: this.cake.comment,
-      yum: parseInt(this.cake.yum)
+      yum: this.cake.yum
     })
   }
 
