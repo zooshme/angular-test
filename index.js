@@ -27,6 +27,7 @@ module.exports = async (req, res) => {
         if (err === null) {
           send(res, 200, {cakes: docs});
         }
+        db.close();
       });
     });
   } else if (req.method === 'GET' && req.url.match(/^\/api\/cakes\/[a-zA-Z0-9]{24}\/?$/i)) {
@@ -37,6 +38,7 @@ module.exports = async (req, res) => {
         if (err === null) {
           send(res, 200, item);
         }
+        db.close();
       })
     })
   } else if (req.method === 'POST' && req.url.match(/^\/api\/cakes\/?$/i)) {
@@ -48,6 +50,7 @@ module.exports = async (req, res) => {
         if (err === null) {
           send(res, 200, cake);
         }
+        db.close();
       });
     });
   } else if (req.method === 'PUT' && req.url.match(/^\/api\/cakes\/[a-zA-Z0-9]{24}\/?$/i)) {
@@ -59,6 +62,7 @@ module.exports = async (req, res) => {
         if (err === null) {
           send(res, 204);
         }
+        db.close()
       })
     })
   } else if (req.method === 'DELETE' && req.url.match(/^\/api\/cakes\/[a-zA-Z0-9]{24}\/?$/i)) {
@@ -69,6 +73,7 @@ module.exports = async (req, res) => {
         if (err === null) {
           send(res, 204);
         }
+        db.close();
       });
     });
 
