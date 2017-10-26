@@ -7,7 +7,7 @@
         Add a new cake
       </a>
     </header>
-    <div class="cakes--list">
+    <div class="cakes--list" ng-if="$ctrl.cakes.length">
       <cakes-item cake="cake" cakes="$ctrl.cakes" index="$index" ng-repeat="cake in $ctrl.cakes track by $index" class="cakes--item"></cakes-item>
     </div>
   </div>

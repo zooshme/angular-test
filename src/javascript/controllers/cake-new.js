@@ -28,12 +28,14 @@ export default class CakeNewController {
   }
 
   submitHandler(e) {
-    this.createOneCake({
-      poster: this.cake.poster,
-      name: this.cake.name,
-      comment: this.cake.comment,
-      yum: this.cake.yum
-    })
+    if (this.form.$valid) {
+      this.createOneCake({
+        poster: this.cake.poster,
+        name: this.cake.name,
+        comment: this.cake.comment,
+        yum: this.cake.yum
+      });
+    }
   }
 
   createOneCake({poster, name, comment, yum}) {

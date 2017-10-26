@@ -38197,7 +38197,7 @@ exports.default = CakesList;
 /* 53 */
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"cakes\">\n  <div class=\"container\">\n    <header class=\"page-header clearfix\">\n      <h1 class=\"page-title pull-left\">Cakes List</h1>\n      <a ng-link=\"['CakeNew']\" class=\"button pull-right\">\n        <icon filepath=\"'/images/plus.svg#Plus'\" class=\"icon\"></icon>\n        Add a new cake\n      </a>\n    </header>\n    <div class=\"cakes--list\">\n      <cakes-item cake=\"cake\" cakes=\"$ctrl.cakes\" index=\"$index\" ng-repeat=\"cake in $ctrl.cakes track by $index\" class=\"cakes--item\"></cakes-item>\n    </div>\n  </div>\n</section>\n";
+module.exports = "<section class=\"cakes\">\n  <div class=\"container\">\n    <header class=\"page-header clearfix\">\n      <h1 class=\"page-title pull-left\">Cakes List</h1>\n      <a ng-link=\"['CakeNew']\" class=\"button pull-right\">\n        <icon filepath=\"'/images/plus.svg#Plus'\" class=\"icon\"></icon>\n        Add a new cake\n      </a>\n    </header>\n    <div class=\"cakes--list\" ng-if=\"$ctrl.cakes.length\">\n      <cakes-item cake=\"cake\" cakes=\"$ctrl.cakes\" index=\"$index\" ng-repeat=\"cake in $ctrl.cakes track by $index\" class=\"cakes--item\"></cakes-item>\n    </div>\n  </div>\n</section>\n";
 
 /***/ }),
 /* 54 */
@@ -38232,7 +38232,7 @@ exports.default = CakesItem;
 /* 55 */
 /***/ (function(module, exports) {
 
-module.exports = "<a ng-link=\"['CakeDetails', {id: $ctrl.cake._id}]\" class=\"cakes--item-link\">\n  <img class=\"cakes--item-poster\" src=\"{{$ctrl.cake.imageUrl}}\" />\n  <h3 class=\"cakes--item-name\">{{$ctrl.cake.name}}</h3>\n</a>\n<a href=\"#\" ng-click=\"$ctrl.deleteClickHandler()\" class=\"cakes--item-remove\">\n  <icon filepath=\"'/images/trash.svg#Trash'\"></icon>\n</a>\n";
+module.exports = "<a ng-link=\"['CakeDetails', {id: $ctrl.cake._id}]\" class=\"cakes--item-link\">\n  <img class=\"cakes--item-poster\" ng-src=\"{{$ctrl.cake.imageUrl}}\" />\n  <h3 class=\"cakes--item-name\">{{$ctrl.cake.name}}</h3>\n</a>\n<a href=\"#\" ng-click=\"$ctrl.deleteClickHandler()\" class=\"cakes--item-remove\">\n  <icon filepath=\"'/images/trash.svg#Trash'\"></icon>\n</a>\n";
 
 /***/ }),
 /* 56 */
@@ -38265,7 +38265,7 @@ exports.default = CakeNew;
 /* 57 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1 class=\"page-title\">Cake New</h1>\n  <form class=\"form clearfix\" ng-submit=\"$ctrl.submitHandler()\">\n    <div class=\"fields\">\n      <div class=\"field\">\n        <label for=\"poster\" class=\"label\">Poster</label>\n        <input class=\"input\" type=\"text\" name=\"poster\" id=\"poster\" ng-model=\"$ctrl.cake.poster\" />\n      </div>\n      <div class=\"field\">\n        <label for=\"name\" class=\"label\">Name</label>\n        <input class=\"input\" type=\"text\" name=\"name\" id=\"name\" ng-model=\"$ctrl.cake.name\" />\n      </div>\n      <div class=\"field\">\n        <label for=\"comment\" class=\"label\">Comment</label>\n        <textarea class=\"input\" name=\"comment\" id=\"comment\" ng-model=\"$ctrl.cake.comment\"></textarea>\n      </div>\n      <div class=\"field\">\n        <label for=\"yum\" class=\"label\">Yum factor</label>\n        <select class=\"input\" name=\"yum\" id=\"yum\"\n        ng-model=\"$ctrl.cake.yumFactor\"\n        ng-options=\"option.name for option in $ctrl.yumScale track by option.id\"\n        ></select>\n      </div>\n    </div>\n    <div class=\"actions\">\n      <input class=\"button\" type=\"submit\" value=\"Add New Cake\" />\n      <a class=\"button button__cancel\" ng-link=\"['CakesList']\">Cancel</a>\n    </div>\n  </form>\n</div>\n";
+module.exports = "<div class=\"container\">\n  <h1 class=\"page-title\">Cake New</h1>\n  <form name=\"form\" class=\"form clearfix\" ng-submit=\"$ctrl.submitHandler()\" novalidate>\n    <div class=\"fields\">\n      <div class=\"field\">\n        <label for=\"imageUrl\" class=\"label\">Image <span class=\"required-mark\">*</span></label>\n        <input class=\"input\" type=\"text\" name=\"imageUrl\" id=\"poster\" ng-model=\"$ctrl.cake.poster\" required />\n        <div class=\"field--errors-list\" ng-show=\"form.$submitted || form.imageUrl.$touched\">\n          <div class=\"field--error-item\" ng-show=\"form.imageUrl.$error.required\">You need to provide an image url.</div>\n        </div>\n      </div>\n      <div class=\"field\">\n        <label for=\"name\" class=\"label\">Name <span class=\"required-mark\">*</span></label>\n        <input class=\"input\" type=\"text\" name=\"name\" id=\"name\" ng-model=\"$ctrl.cake.name\" required/>\n        <div class=\"field--errors-list\" ng-show=\"form.$submitted || form.name.$touched\">\n          <div class=\"field--error-item\" ng-show=\"form.name.$error.required\">You need to provide a cake name.</div>\n        </div>\n      </div>\n      <div class=\"field\">\n        <label for=\"comment\" class=\"label\">Comment</label>\n        <textarea class=\"input\" name=\"comment\" id=\"comment\" ng-model=\"$ctrl.cake.comment\"></textarea>\n      </div>\n      <div class=\"field\">\n        <label for=\"yum\" class=\"label\">Yum factor</label>\n        <select class=\"input\" name=\"yum\" id=\"yum\"\n        ng-model=\"$ctrl.cake.yumFactor\"\n        ng-options=\"option.name for option in $ctrl.yumScale track by option.id\"\n        ></select>\n      </div>\n      <legend class=\"legend\">\n        <p>* required field</p>\n      </legend>\n    </div>\n\n    <div class=\"actions\">\n      <input class=\"button\" type=\"submit\" value=\"Add New Cake\" />\n      <a class=\"button button__cancel\" ng-link=\"['CakesList']\">Cancel</a>\n    </div>\n  </form>\n</div>\n";
 
 /***/ }),
 /* 58 */
@@ -38298,7 +38298,7 @@ exports.default = CakeDetails;
 /* 59 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <section class=\"cake-details clearfix\">\n    <div class=\"fields\">\n      <img class=\"cake-details--poster\" src=\"{{$ctrl.cake.imageUrl}}\" />\n      <h1 class=\"page-title\">{{$ctrl.cake.name}}</h1>\n      <p class=\"cake-details--comment\">{{$ctrl.cake.comment}}</p>\n    </div>\n    <div class=\"actions\">\n      <a class=\"button\" ng-link=\"['CakeEdit', {id: $ctrl.cake._id}]\">Edit</a>\n      <a class=\"button button__cancel\" ng-link=\"['CakesList']\">View all</a>\n    </div>\n  </section>\n</div>\n";
+module.exports = "<div class=\"container\">\n  <section ng-if=\"$ctrl.cake\" class=\"cake-details clearfix\">\n    <div class=\"fields\">\n      <img class=\"cake-details--poster\" ng-src=\"{{$ctrl.cake.imageUrl}}\" />\n      <h1 class=\"page-title\">{{$ctrl.cake.name}}</h1>\n      <p class=\"cake-details--comment\">{{$ctrl.cake.comment}}</p>\n    </div>\n    <div class=\"actions\">\n      <a class=\"button\" ng-link=\"['CakeEdit', {id: $ctrl.cake._id}]\">Edit</a>\n      <a class=\"button button__cancel\" ng-link=\"['CakesList']\">View all</a>\n    </div>\n  </section>\n</div>\n";
 
 /***/ }),
 /* 60 */
@@ -38331,7 +38331,7 @@ exports.default = CakeEdit;
 /* 61 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1 class=\"page-title\">Cake Edit</h1>\n  <form class=\"form clearfix\" ng-submit=\"$ctrl.submitHandler()\">\n    <div class=\"fields\">\n      <div class=\"field\">\n        <label for=\"image-url\" class=\"label\">Image</label>\n        <input class=\"input\" type=\"text\" name=\"image-url\" id=\"poster\" ng-model=\"$ctrl.cake.imageUrl\" />\n      </div>\n      <div class=\"field\">\n        <label for=\"name\" class=\"label\">Name</label>\n        <input class=\"input\" type=\"text\" name=\"name\" id=\"name\" ng-model=\"$ctrl.cake.name\" />\n      </div>\n      <div class=\"field\">\n        <label for=\"comment\" class=\"label\">Comment</label>\n        <textarea class=\"input\" name=\"comment\" id=\"comment\" ng-model=\"$ctrl.cake.comment\"></textarea>\n      </div>\n      <div class=\"field\">\n        <label for=\"yum\" class=\"label\">Yum factor</label>\n        <select class=\"input\" name=\"yum\" id=\"yum\"\n        ng-model=\"$ctrl.cake.yumFactor\"\n        ng-options=\"option.name for option in $ctrl.yumScale track by option.id\"\n        ></select>\n      </div>\n    </div>\n    <div class=\"actions\">\n      <input class=\"button\" type=\"submit\" value=\"Update Cake\" />\n      <a class=\"button button__cancel\" ng-link=\"['CakesList']\">Cancel</a>\n    </div>\n  </form>\n</div>\n";
+module.exports = "<div class=\"container\">\n  <h1 class=\"page-title\">Cake Edit</h1>\n  <form name=\"form\" class=\"form clearfix\" ng-submit=\"$ctrl.submitHandler()\" novalidate>\n    <div class=\"fields\">\n      <div class=\"field\">\n        <label for=\"imageUrl\" class=\"label\">Image <span class=\"required-mark\">*</span></label>\n        <input class=\"input\" type=\"text\" name=\"imageUrl\" id=\"poster\" ng-model=\"$ctrl.cake.poster\" required />\n        <div class=\"field--errors-list\" ng-show=\"form.$submitted || form.imageUrl.$touched\">\n          <div class=\"field--error-item\" ng-show=\"form.imageUrl.$error.required\">You need to provide an image url.</div>\n        </div>\n      </div>\n      <div class=\"field\">\n        <label for=\"name\" class=\"label\">Name <span class=\"required-mark\">*</span></label>\n        <input class=\"input\" type=\"text\" name=\"name\" id=\"name\" ng-model=\"$ctrl.cake.name\" required/>\n        <div class=\"field--errors-list\" ng-show=\"form.$submitted || form.name.$touched\">\n          <div class=\"field--error-item\" ng-show=\"form.name.$error.required\">You need to provide a cake name.</div>\n        </div>\n      </div>\n      <div class=\"field\">\n        <label for=\"comment\" class=\"label\">Comment</label>\n        <textarea class=\"input\" name=\"comment\" id=\"comment\" ng-model=\"$ctrl.cake.comment\"></textarea>\n      </div>\n      <div class=\"field\">\n        <label for=\"yum\" class=\"label\">Yum factor</label>\n        <select class=\"input\" name=\"yum\" id=\"yum\"\n        ng-model=\"$ctrl.cake.yumFactor\"\n        ng-options=\"option.name for option in $ctrl.yumScale track by option.id\"\n        ></select>\n      </div>\n      <legend class=\"legend\">\n        <p>* required field</p>\n      </legend>\n    </div>\n    <div class=\"actions\">\n      <input class=\"button\" type=\"submit\" value=\"Update Cake\" />\n      <a class=\"button button__cancel\" ng-link=\"['CakesList']\">Cancel</a>\n    </div>\n  </form>\n</div>\n";
 
 /***/ }),
 /* 62 */
@@ -38429,7 +38429,6 @@ var CakeDetailsController = function () {
 
     this.$http = $http;
     this.cakesService = cakesService;
-    this.name = "It's a Wonderful World!";
   }
 
   (0, _createClass3.default)(CakeDetailsController, [{
@@ -40378,12 +40377,14 @@ var CakeNewController = function () {
   }, {
     key: 'submitHandler',
     value: function submitHandler(e) {
-      this.createOneCake({
-        poster: this.cake.poster,
-        name: this.cake.name,
-        comment: this.cake.comment,
-        yum: this.cake.yum
-      });
+      if (this.form.$valid) {
+        this.createOneCake({
+          poster: this.cake.poster,
+          name: this.cake.name,
+          comment: this.cake.comment,
+          yum: this.cake.yum
+        });
+      }
     }
   }, {
     key: 'createOneCake',
@@ -40494,11 +40495,16 @@ var CakeEditController = function () {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                if (!this.form.$valid) {
+                  _context2.next = 4;
+                  break;
+                }
+
                 _cake = this.cake, _id = _cake._id, imageUrl = _cake.imageUrl, name = _cake.name, comment = _cake.comment, yumFactor = _cake.yumFactor;
-                _context2.next = 3;
+                _context2.next = 4;
                 return this.updateOneCake({ _id: _id, imageUrl: imageUrl, name: name, comment: comment, yumFactor: yumFactor });
 
-              case 3:
+              case 4:
               case 'end':
                 return _context2.stop();
             }

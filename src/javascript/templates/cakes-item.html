@@ -1,5 +1,5 @@
 <a ng-link="['CakeDetails', {id: $ctrl.cake._id}]" class="cakes--item-link">
-  <img class="cakes--item-poster" src="{{$ctrl.cake.imageUrl}}" />
+  <img class="cakes--item-poster" ng-src="{{$ctrl.cake.imageUrl}}" />
   <h3 class="cakes--item-name">{{$ctrl.cake.name}}</h3>
 </a>
 <a href="#" ng-click="$ctrl.deleteClickHandler()" class="cakes--item-remove">

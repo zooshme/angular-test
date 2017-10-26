@@ -1,14 +1,20 @@
 <div class="container">
   <h1 class="page-title">Cake Edit</h1>
-  <form class="form clearfix" ng-submit="$ctrl.submitHandler()">
+  <form name="form" class="form clearfix" ng-submit="$ctrl.submitHandler()" novalidate>
     <div class="fields">
       <div class="field">
-        <label for="image-url" class="label">Image</label>
-        <input class="input" type="text" name="image-url" id="poster" ng-model="$ctrl.cake.imageUrl" />
+        <label for="imageUrl" class="label">Image <span class="required-mark">*</span></label>
+        <input class="input" type="text" name="imageUrl" id="poster" ng-model="$ctrl.cake.poster" required />
+        <div class="field--errors-list" ng-show="form.$submitted || form.imageUrl.$touched">
+          <div class="field--error-item" ng-show="form.imageUrl.$error.required">You need to provide an image url.</div>
+        </div>
       </div>
       <div class="field">
-        <label for="name" class="label">Name</label>
-        <input class="input" type="text" name="name" id="name" ng-model="$ctrl.cake.name" />
+        <label for="name" class="label">Name <span class="required-mark">*</span></label>
+        <input class="input" type="text" name="name" id="name" ng-model="$ctrl.cake.name" required/>
+        <div class="field--errors-list" ng-show="form.$submitted || form.name.$touched">
+          <div class="field--error-item" ng-show="form.name.$error.required">You need to provide a cake name.</div>
+        </div>
       </div>
       <div class="field">
         <label for="comment" class="label">Comment</label>
@@ -21,6 +27,9 @@
         ng-options="option.name for option in $ctrl.yumScale track by option.id"
         ></select>
       </div>
+      <legend class="legend">
+        <p>* required field</p>
+      </legend>
     </div>
     <div class="actions">
       <input class="button" type="submit" value="Update Cake" />

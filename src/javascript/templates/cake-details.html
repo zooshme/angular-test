@@ -1,7 +1,7 @@
 <div class="container">
-  <section class="cake-details clearfix">
+  <section ng-if="$ctrl.cake" class="cake-details clearfix">
     <div class="fields">
-      <img class="cake-details--poster" src="{{$ctrl.cake.imageUrl}}" />
+      <img class="cake-details--poster" ng-src="{{$ctrl.cake.imageUrl}}" />
       <h1 class="page-title">{{$ctrl.cake.name}}</h1>
       <p class="cake-details--comment">{{$ctrl.cake.comment}}</p>
     </div>
