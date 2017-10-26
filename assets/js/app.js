@@ -38243,7 +38243,7 @@ exports.default = CakesItem;
 /* 55 */
 /***/ (function(module, exports) {
 
-module.exports = "<a ng-link=\"['CakeDetails', {id: $ctrl.cake._id}]\" class=\"cakes--item-link\">\n  <img class=\"cakes--item-poster\" ng-src=\"{{$ctrl.cake.imageUrl}}\" />\n  <h3 class=\"cakes--item-name\">{{$ctrl.cake.name}}</h3>\n</a>\n<a href=\"#\" ng-click=\"$ctrl.deleteClickHandler()\" class=\"cakes--item-remove\">\n  <icon filepath=\"'/images/trash.svg#Trash'\"></icon>\n</a>\n";
+module.exports = "<a ng-link=\"['CakeDetails', {id: $ctrl.cake._id}]\" class=\"cakes--item-link\">\n  <img class=\"cakes--item-poster\" ng-src=\"{{$ctrl.cake.imageUrl}}\" />\n  <h3 class=\"cakes--item-name\">{{$ctrl.cake.name}}</h3>\n  <span class=\"cakes--item-yumfactor\">{{$ctrl.cake.yumFactor.name}}</span>\n</a>\n<a href=\"#\" ng-click=\"$ctrl.deleteClickHandler()\" class=\"cakes--item-remove\">\n  <icon filepath=\"'/images/trash.svg#Trash'\"></icon>\n</a>\n";
 
 /***/ }),
 /* 56 */
@@ -38309,7 +38309,7 @@ exports.default = CakeDetails;
 /* 59 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <section ng-if=\"$ctrl.cake\" class=\"cake-details clearfix\">\n    <div class=\"fields\">\n      <img class=\"cake-details--poster\" ng-src=\"{{$ctrl.cake.imageUrl}}\" />\n      <h1 class=\"page-title\">{{$ctrl.cake.name}}</h1>\n      <div class=\"cake-details--comment\" ng-bind-html=\"$ctrl.cake.comment|markdown|unsafe\"></div>\n    </div>\n    <div class=\"actions\">\n      <a class=\"button\" ng-link=\"['CakeEdit', {id: $ctrl.cake._id}]\">Edit</a>\n      <a class=\"button button__cancel\" ng-link=\"['CakesList']\">View all</a>\n    </div>\n  </section>\n</div>\n";
+module.exports = "<div class=\"container\">\n  <section ng-if=\"$ctrl.cake\" class=\"cake-details clearfix\">\n    <div class=\"fields\">\n      <img class=\"cake-details--poster\" ng-src=\"{{$ctrl.cake.imageUrl}}\" />\n      <h1 class=\"page-title\">{{$ctrl.cake.name}}</h1>\n      <span class=\"cake-details--yumfactor\">{{$ctrl.cake.yumFactor.name}}</span>\n      <div class=\"cake-details--comment\" ng-bind-html=\"$ctrl.cake.comment|markdown|unsafe\"></div>\n    </div>\n    <div class=\"actions\">\n      <a class=\"button\" ng-link=\"['CakeEdit', {id: $ctrl.cake._id}]\">Edit</a>\n      <a class=\"button button__cancel\" ng-link=\"['CakesList']\">View all</a>\n    </div>\n  </section>\n</div>\n";
 
 /***/ }),
 /* 60 */

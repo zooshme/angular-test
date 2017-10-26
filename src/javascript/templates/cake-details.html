@@ -3,6 +3,7 @@
     <div class="fields">
       <img class="cake-details--poster" ng-src="{{$ctrl.cake.imageUrl}}" />
       <h1 class="page-title">{{$ctrl.cake.name}}</h1>
+      <span class="cake-details--yumfactor">{{$ctrl.cake.yumFactor.name}}</span>
       <div class="cake-details--comment" ng-bind-html="$ctrl.cake.comment|markdown|unsafe"></div>
     </div>
     <div class="actions">

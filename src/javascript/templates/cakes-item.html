@@ -1,6 +1,7 @@
 <a ng-link="['CakeDetails', {id: $ctrl.cake._id}]" class="cakes--item-link">
   <img class="cakes--item-poster" ng-src="{{$ctrl.cake.imageUrl}}" />
   <h3 class="cakes--item-name">{{$ctrl.cake.name}}</h3>
+  <span class="cakes--item-yumfactor">{{$ctrl.cake.yumFactor.name}}</span>
 </a>
 <a href="#" ng-click="$ctrl.deleteClickHandler()" class="cakes--item-remove">
   <icon filepath="'/images/trash.svg#Trash'"></icon>
