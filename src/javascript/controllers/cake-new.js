@@ -33,7 +33,7 @@ export default class CakeNewController {
         poster: this.cake.poster,
         name: this.cake.name,
         comment: this.cake.comment,
-        yum: this.cake.yum
+        yumFactor: this.cake.yumFactor
       });
     }
   }
