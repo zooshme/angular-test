@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="page-title">Cake Edit</h1>
-  <form name="form" class="form clearfix" ng-submit="$ctrl.submitHandler()" novalidate>
+  <form ng-if="$ctrl.cake" name="form" class="form clearfix" ng-submit="$ctrl.submitHandler()" novalidate>
     <div class="fields">
       <div class="field">
         <label for="imageUrl" class="label">Image <span class="required-mark">*</span></label>
