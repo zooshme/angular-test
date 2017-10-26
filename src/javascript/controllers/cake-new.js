@@ -27,8 +27,8 @@ export default class CakeNewController {
     this.errors = [];
   }
 
-  submitHandler(e) {
-    if (this.form.$valid) {
+  submitHandler(form) {
+    if (form.$valid) {
       this.createOneCake({
         poster: this.cake.poster,
         name: this.cake.name,

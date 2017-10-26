@@ -24,6 +24,10 @@ import CakeEditController from './controllers/cake-edit.js';
 // Templates
 import MainHtml from './templates/main.html';
 
+// Filters
+import markdown from './filters/markdown.js';
+import unsafe from './filters/unsafe.js';
+
 angular.module('app', ['ngComponentRouter'])
   .config(function($locationProvider) {
     $locationProvider.html5Mode({
@@ -31,6 +35,8 @@ angular.module('app', ['ngComponentRouter'])
     });
   })
   .value('$routerRootComponent', 'app')
+  .filter('markdown', markdown)
+  .filter('unsafe', unsafe)
   .component('app', {
     template: MainHtml,
     $routeConfig: [

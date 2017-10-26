@@ -1,10 +1,10 @@
 <div class="container">
   <h1 class="page-title">Cake Edit</h1>
-  <form ng-if="$ctrl.cake" name="form" class="form clearfix" ng-submit="$ctrl.submitHandler()" novalidate>
+  <form name="form" ng-if="$ctrl.cake" class="form clearfix" ng-submit="$ctrl.submitHandler(form)" novalidate>
     <div class="fields">
       <div class="field">
         <label for="imageUrl" class="label">Image <span class="required-mark">*</span></label>
-        <input class="input" type="text" name="imageUrl" id="poster" ng-model="$ctrl.cake.poster" required />
+        <input class="input" type="text" name="imageUrl" id="poster" ng-model="$ctrl.cake.imageUrl" required />
         <div class="field--errors-list" ng-show="form.$submitted || form.imageUrl.$touched">
           <div class="field--error-item" ng-show="form.imageUrl.$error.required">You need to provide an image url.</div>
         </div>

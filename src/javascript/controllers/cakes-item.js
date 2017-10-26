@@ -1,9 +1,10 @@
 export default class CakesItemController {
-  constructor($http, cakesService) {
+  constructor($http, $sce, cakesService) {
     this.$http = $http;
+    this.$sce = $sce;
     this.cakesService = cakesService;
   }
-
+  
   deleteClickHandler() {
     if (confirm('Are you sure you want to remove this cake?')) {
       this.deleteOneCake(this.cake._id)

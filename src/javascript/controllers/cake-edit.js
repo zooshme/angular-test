@@ -25,8 +25,8 @@ export default class CakeEditController {
     });
   }
 
-  async submitHandler() {
-    if (this.form.$valid) {
+  async submitHandler(form) {
+    if (form.$valid) {
       let {_id, imageUrl, name, comment, yumFactor} = this.cake;
       await this.updateOneCake({_id, imageUrl, name, comment, yumFactor});
     }
