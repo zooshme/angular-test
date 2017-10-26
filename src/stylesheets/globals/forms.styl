@@ -7,11 +7,22 @@
 .fields {
   width: 60%;
   float: left;
+
+  @media screen and (max-width: $small) {
+    width: 100%;
+    float: none;
+  }
 }
 
 .actions {
   width: 35%;
   float: right;
+
+  @media screen and (max-width: $small) {
+    margin-top: $rem(50px);
+    width: 100%;
+    float: none;
+  }
 }
 
 .label {
