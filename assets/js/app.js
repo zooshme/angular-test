@@ -40391,10 +40391,10 @@ var CakeNewController = function () {
     value: function submitHandler(form) {
       if (form.$valid) {
         this.createOneCake({
-          poster: this.cake.poster,
+          imageUrl: this.cake.imageUrl,
           name: this.cake.name,
           comment: this.cake.comment,
-          yum: this.cake.yum
+          yumFactor: this.cake.yumFactor
         });
       }
     }

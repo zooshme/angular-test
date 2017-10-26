@@ -30,7 +30,7 @@ export default class CakeNewController {
   submitHandler(form) {
     if (form.$valid) {
       this.createOneCake({
-        poster: this.cake.poster,
+        imageUrl: this.cake.imageUrl,
         name: this.cake.name,
         comment: this.cake.comment,
         yumFactor: this.cake.yumFactor
