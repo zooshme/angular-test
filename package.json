@@ -42,7 +42,9 @@
     "mongodb": "^2.2.33",
     "ngcomponentrouter": "^2.1.0"
   },
-  "alias": "cakes.zoosh.me",
+  "now": {
+    "alias": "cakes.zoosh.me"
+  },
   "jest": {
     "moduleFileExtensions": [
       "js",
