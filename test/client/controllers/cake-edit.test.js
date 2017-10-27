@@ -40,14 +40,13 @@ describe('CakeEditController', () => {
       comment: 'Tastes great',
       yumFactor: {value: 5, name: "Yummy"}
     });
-    controller.cake = {
+    await controller.updateOneCake({
       _id: '59ec9a0dbf3cf12c1c745219',
       imageUrl: 'https://source.unsplash.com/random',
       name: 'Sweet Cake',
       comment: 'Tastes great',
       yumFactor: {value: 5, name: "Yummy"}
-    }
-    await controller.submitHandler();
+    });
     $httpBackend.flush();
     expect(routerSpy).toHaveBeenCalled();
 
