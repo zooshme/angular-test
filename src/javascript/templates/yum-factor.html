@@ -1,1 +1,4 @@
-<icon ng-repeat="rate in [1,2,3,4,5]" filepath="'/images/doughnut.svg#doughnut'" class="yum-factor--rate">{{rate}}</icon>
+<span ng-repeat="rate in [1,2,3,4,5]">
+  <icon  ng-if="rate <= value" filepath="'/images/doughnut.svg#doughnut'" class="yum-factor--rate"></icon>
+  <icon  ng-if="rate > value" filepath="'/images/doughnut-plain.svg#doughnut'" class="yum-factor--rate"></icon>
+</span>
