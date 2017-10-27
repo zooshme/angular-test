@@ -62,4 +62,5 @@ angular.module('app', ['ngComponentRouter'])
   .controller('CakesListController', CakesListController)
   .controller('CakesItemController', CakesItemController)
   .controller('CakeNewController', CakeNewController)
-  .controller('CakeEditController', CakeEditController);
+  .controller('CakeEditController', CakeEditController)
+  .directive('yumFactor', YumFactor);
