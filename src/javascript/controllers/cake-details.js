@@ -9,8 +9,10 @@ export default class CakeDetailsController {
   }
 
   fetchOneCake(id) {
+    this.loading = true;
     this.cakesService.fetchOneCake(id).then((response) => {
       this.cake = response.data;
+      this.loading = false;
     }, () => {
       console.log(err);
     });

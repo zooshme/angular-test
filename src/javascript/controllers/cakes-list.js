@@ -9,8 +9,10 @@ export default class CakesListController {
   }
 
   fetchAllCakes() {
+    this.loading = true;
     this.cakesService.fetchAllCakes().then((response) => {
       this.cakes = response.data.cakes;
+      this.loading = false;
     }, (err) => {
       console.log(err)
     });

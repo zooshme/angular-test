@@ -14,6 +14,7 @@ import CakeEdit from './components/cake-edit';
 import Info from './components/info';
 import Icon from './components/icon';
 
+import Loading from './components/loading';
 // Controllers
 import CakeDetailsController from './controllers/cake-details.js';
 import CakesListController from './controllers/cakes-list.js';
@@ -56,6 +57,7 @@ angular.module('app', ['ngComponentRouter'])
   .component('cakeEdit', CakeEdit)
   .component('info', Info)
   .component('icon', Icon)
+  .component('loading', Loading)
   .controller('CakeDetailsController', CakeDetailsController)
   .controller('CakesListController', CakesListController)
   .controller('CakesItemController', CakesItemController)

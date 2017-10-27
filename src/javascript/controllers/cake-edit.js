@@ -18,7 +18,9 @@ export default class CakeEditController {
   }
 
   fetchOneCake(id) {
+    this.loading = true;
     this.cakesService.fetchOneCake(id).then((response) => {
+      this.loading = false;
       this.cake = response.data;
     }, (err) => {
       console.log(err);
@@ -33,7 +35,9 @@ export default class CakeEditController {
   }
 
   updateOneCake(fields) {
+    this.loading = true;
     this.cakesService.updateOneCake(fields).then((response) => {
+      this.loading = false;
       this.$router.navigate(['CakeDetails', {id: fields._id}]);
     }, (err) => {
       console.log(err);
