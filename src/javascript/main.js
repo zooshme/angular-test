@@ -13,14 +13,17 @@ import CakeDetails from './components/cake-details';
 import CakeEdit from './components/cake-edit';
 import Info from './components/info';
 import Icon from './components/icon';
-
 import Loading from './components/loading';
+
 // Controllers
 import CakeDetailsController from './controllers/cake-details.js';
 import CakesListController from './controllers/cakes-list.js';
 import CakesItemController from './controllers/cakes-item.js';
 import CakeNewController from './controllers/cake-new.js';
 import CakeEditController from './controllers/cake-edit.js';
+
+// Directives
+import YumFactor from './directives/yum-factor';
 
 // Templates
 import MainHtml from './templates/main.html';

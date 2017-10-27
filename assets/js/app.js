@@ -895,15 +895,19 @@ var _cakeEdit3 = __webpack_require__(107);
 
 var _cakeEdit4 = _interopRequireDefault(_cakeEdit3);
 
-var _main = __webpack_require__(108);
+var _yumFactor = __webpack_require__(108);
+
+var _yumFactor2 = _interopRequireDefault(_yumFactor);
+
+var _main = __webpack_require__(110);
 
 var _main2 = _interopRequireDefault(_main);
 
-var _markdown = __webpack_require__(109);
+var _markdown = __webpack_require__(111);
 
 var _markdown2 = _interopRequireDefault(_markdown);
 
-var _unsafe = __webpack_require__(112);
+var _unsafe = __webpack_require__(114);
 
 var _unsafe2 = _interopRequireDefault(_unsafe);
 
@@ -911,10 +915,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // Filters
 
-// Controllers
+
+// Directives
 
 
-// Services
+// Components
 _angular2.default.module('app', ['ngComponentRouter']).config(function ($locationProvider) {
   $locationProvider.html5Mode({
     enabled: true
@@ -922,12 +927,15 @@ _angular2.default.module('app', ['ngComponentRouter']).config(function ($locatio
 }).value('$routerRootComponent', 'app').filter('markdown', _markdown2.default).filter('unsafe', _unsafe2.default).component('app', {
   template: _main2.default,
   $routeConfig: [{ path: '/cakes', name: 'CakesList', component: 'cakesList', useAsDefault: true }, { path: '/cakes/new', name: 'CakeNew', component: 'cakeNew' }, { path: '/cakes/:id', name: 'CakeDetails', component: 'cakeDetails' }, { path: '/cakes/:id/edit', name: 'CakeEdit', component: 'cakeEdit' }, { path: '/info', name: 'Info', component: 'info' }]
-}).service('cakesService', _cakes2.default).component('appHeader', _header2.default).component('cakesList', _cakesList2.default).component('cakesItem', _cakesItem2.default).component('cakeNew', _cakeNew2.default).component('cakeDetails', _cakeDetails2.default).component('cakeEdit', _cakeEdit2.default).component('info', _info2.default).component('icon', _icon2.default).component('loading', _loading2.default).controller('CakeDetailsController', _cakeDetails4.default).controller('CakesListController', _cakesList4.default).controller('CakesItemController', _cakesItem4.default).controller('CakeNewController', _cakeNew4.default).controller('CakeEditController', _cakeEdit4.default).directive('yumFactor', YumFactor);
+}).service('cakesService', _cakes2.default).component('appHeader', _header2.default).component('cakesList', _cakesList2.default).component('cakesItem', _cakesItem2.default).component('cakeNew', _cakeNew2.default).component('cakeDetails', _cakeDetails2.default).component('cakeEdit', _cakeEdit2.default).component('info', _info2.default).component('icon', _icon2.default).component('loading', _loading2.default).controller('CakeDetailsController', _cakeDetails4.default).controller('CakesListController', _cakesList4.default).controller('CakesItemController', _cakesItem4.default).controller('CakeNewController', _cakeNew4.default).controller('CakeEditController', _cakeEdit4.default).directive('yumFactor', _yumFactor2.default);
 
 // Templates
 
 
-// Components
+// Controllers
+
+
+// Services
 
 /***/ }),
 /* 40 */
@@ -40586,12 +40594,44 @@ exports.default = CakeEditController;
 
 /***/ }),
 /* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return {
+    scope: {
+      value: '='
+    },
+    template: _yumFactor2.default
+  };
+};
+
+var _yumFactor = __webpack_require__(109);
+
+var _yumFactor2 = _interopRequireDefault(_yumFactor);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 109 */
+/***/ (function(module, exports) {
+
+module.exports = "<icon ng-repeat=\"rate in [1,2,3,4,5]\" filepath=\"'/images/doughnut.svg#doughnut'\" class=\"yum-factor--rate\">{{rate}}</icon>\n";
+
+/***/ }),
+/* 110 */
 /***/ (function(module, exports) {
 
 module.exports = "<app-header class=\"header\"></app-header>\n<ng-outlet></ng-outlet>\n<footer class=\"footer\">\n  <div class=\"container\"></div>\n</footer>\n";
 
 /***/ }),
-/* 109 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40607,14 +40647,14 @@ exports.default = function () {
   };
 };
 
-var _marked = __webpack_require__(110);
+var _marked = __webpack_require__(112);
 
 var _marked2 = _interopRequireDefault(_marked);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 110 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -41904,10 +41944,10 @@ if (true) {
   return this || (typeof window !== 'undefined' ? window : global);
 }());
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(111)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(113)))
 
 /***/ }),
-/* 111 */
+/* 113 */
 /***/ (function(module, exports) {
 
 var g;
@@ -41934,7 +41974,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 112 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
